@@ -162,6 +162,17 @@ Et enfin on format les ligne en csv et l'écrit dans un fichier.
         
 ```
 ### Droit accés
+Dans la classe Utilisateur, les rôles sont un tableau stocké dans la base de données et chaque utilisateur à un role.
+```php
+public function getRoles(): array
+    {
+        $roles = $this->roles;  //on va chercher le role de l'utilsateur
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER'; //n'importe quel utilisateur connecter aura se role
+
+        return array_unique($roles);
+    }
+```
 
 
 
